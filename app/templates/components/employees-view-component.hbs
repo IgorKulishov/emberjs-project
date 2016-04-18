@@ -10,11 +10,12 @@
 	<tbody>
 	{{#each employees as |employee|}}
         <tr class="active">
-			<td>{{employee.id}}</td>
-			<td>{{employee.firstName}}</td>
-			<td>{{employee.lastName}}</td>
-			<td>{{employee.email}}</td>
+			<td><a href="/employees-detail">{{employee.id}}</a></td>
+			<td><a href="/employees-detail">{{employee.firstName}}</a></td>
+			<td><a href="/employees-detail">{{employee.lastName}}</a></td>
+			<td><a href="/employees-detail">{{employee.email}}</a></td>
         </tr>
     {{/each}}
 	</tbody>
 </table>
+<a class="btn btn-default" role="button" href="/employees-add">Add New Employee</a>
