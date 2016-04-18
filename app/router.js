@@ -6,6 +6,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('employees-view');
+  this.route('employees-add');
+  this.route('employees-edit');
+  this.route('employees-detail');
+  this.route('settings');
 });
 
 export default Router;
