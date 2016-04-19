@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('employees-edit');
   this.route('employees-detail');
   this.route('settings');
+  this.route('employees');
 });
 
 export default Router;

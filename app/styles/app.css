@@ -26,3 +26,9 @@
 	padding: 5px;
 	margin: 5px;
 }
+input {
+    display: block;
+}
+td {
+	cursor: pointer;
+}

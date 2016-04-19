@@ -1,3 +1,6 @@
+{{#link-to "employees"}}Employees{{/link-to}} 
+{{#link-to "settings"}}Settings{{/link-to}} 
+
 {{#if employeeListVisible}}
 	<table class="table table-striped">
 		<thead>
@@ -42,7 +45,7 @@
 	{{input class="input-field" value=employeeDetail.dept name=dept placeholder="Department"}}
     <button type="submit">Save</button>
 </form>
-<button {{action "cancelDetailEdit"}}>Cancel</button>
+<button {{action "cancelDetail"}}>Cancel</button>
 {{/if}}
 
 {{#if addNewEmployeeVisible}}

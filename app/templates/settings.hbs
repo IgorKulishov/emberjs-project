@@ -1,1 +1,13 @@
-{{outlet}}
+{{#link-to "employees"}}Employees{{/link-to}} 
+{{#link-to "settings"}}Settings{{/link-to}} 
+
+<h2>Settings</h2>
+<form {{action "saveDetailEdit" employeeDetail on="submit"}}>
+	{{input type="checkbox" name=value_1 placeholder="First Name"}} Value 1
+	{{input type="checkbox" name=value_2 placeholder="Last Name"}} Value 2
+	{{input type="checkbox" name=value_3 placeholder="Email"}} Value 3
+	{{input type="checkbox" name=value_4 placeholder="Telephone"}} Value 4
+	{{input type="checkbox" name=value_5 placeholder="Department"}} Value 5
+    <button type="submit">Save</button>
+</form>
+<button {{action "cancelDetailEdit"}}>Cancel</button>
