@@ -1,0 +1,28 @@
+#add-new-employee {
+	margin: 10px;
+	padding: 5px;
+	background-color: #72bcd4;
+	border-color: #72bcd4;
+	color:#fff;
+}
+#employee-list {
+	margin: 10px;
+	padding: 5px, 10px, 5px, 5px;
+	border-radius: 15px;
+	position: absolute;
+    right: 20px;
+	background-color: #72bcd4;
+	border-color: #72bcd4;
+	color:#fff;
+}
+#edit-employee {
+	margin: 10px;
+	padding: 5px;
+	background-color: #72bcd4;
+	border-color: #72bcd4;
+	color:#fff;
+}
+.input-field {
+	padding: 5px;
+	margin: 5px;
+}

@@ -1,21 +1,59 @@
-<table class="table table-striped">
-	<thead>
-	    <tr>
-			<th>Employee Id</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Email</th>
-	    </tr>
-	</thead>
-	<tbody>
-	{{#each employees as |employee|}}
-        <tr class="active">
-			<td><a href="/employees-detail">{{employee.id}}</a></td>
-			<td><a href="/employees-detail">{{employee.firstName}}</a></td>
-			<td><a href="/employees-detail">{{employee.lastName}}</a></td>
-			<td><a href="/employees-detail">{{employee.email}}</a></td>
-        </tr>
-    {{/each}}
-	</tbody>
-</table>
-<a class="btn btn-default" role="button" href="/employees-add">Add New Employee</a>
+{{#if employeeListVisible}}
+	<table class="table table-striped">
+		<thead>
+		    <tr>
+				<th>Employee Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+		    </tr>
+		</thead>
+		<tbody>
+		{{#each employees as |employee|}}
+	        <tr class="active">
+				<td {{action "showEmployeeDetail" employee}}>{{employee.id}}</td>
+				<td {{action "showEmployeeDetail" employee}}>{{employee.firstName}}</td>
+				<td {{action "showEmployeeDetail" employee}}>{{employee.lastName}}</td>
+				<td {{action "showEmployeeDetail" employee}}>{{employee.email}}</td>
+	        </tr>
+	    {{/each}}
+		</tbody>
+	</table>
+	<button {{action "addNewEmployeeForm"}} class="btn btn-default" role="button" id="add-new-employee">Add New Employee</button>
+{{/if}}
+
+{{#if employeeDetailVisible}}
+  <h2>Employee Detail</h2>
+  <button {{action "showEmployeeList"}} class="btn btn-default" role="button" id="employee-list">Back</button>
+  <h3>Name: {{employeeDetail.firstName}}</h3>
+  <h3>Email: {{employeeDetail.email}}</h3>
+  <h3>Tel: {{employeeDetail.tel}}</h3>
+  <h3>Dept: {{employeeDetail.dept}}</h3>
+  <button {{action "employeeDetailEditForm" employeeDetail}} class="btn btn-default" role="button" id="edit-employee">Edit</button>
+{{/if}}
+
+{{#if detailEditVisible}}
+<h2>Employee Edit</h2>
+<form {{action "saveDetailEdit" employeeDetail on="submit"}}>
+	{{input class="input-field" value=employeeDetail.firstName name=firstName placeholder="First Name"}}
+	{{input class="input-field" value=employeeDetail.lastName name=lastName placeholder="Last Name"}}
+	{{input class="input-field" value=employeeDetail.email name=email placeholder="Email"}}
+	{{input class="input-field" value=employeeDetail.tel name=tel placeholder="Telephone"}}
+	{{input class="input-field" value=employeeDetail.dept name=dept placeholder="Department"}}
+    <button type="submit">Save</button>
+</form>
+<button {{action "cancelDetailEdit"}}>Cancel</button>
+{{/if}}
+
+{{#if addNewEmployeeVisible}}
+<h2>Employee Add</h2>
+<form {{action "addNewEmployee" employeeDetail on="submit"}}>
+	{{input class="input-field" value=employeeDetail.firstName name=firstName placeholder="First Name"}}
+	{{input class="input-field" value=employeeDetail.lastName name=lastName placeholder="Last Name"}}
+	{{input class="input-field" value=employeeDetail.email name=email placeholder="Email"}}
+	{{input class="input-field" value=employeeDetail.tel name=tel placeholder="Telephone"}}
+	{{input class="input-field" value=employeeDetail.dept name=dept placeholder="Department"}}
+    <button type="submit">Save</button>
+</form>
+<button {{action "cancelDetail"}}>Cancel</button>
+{{/if}}
