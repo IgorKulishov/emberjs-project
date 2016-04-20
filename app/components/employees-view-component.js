@@ -24,9 +24,8 @@ export default Ember.Component.extend({
 			this.set('employeeDetailVisible', false);
 			this.set('detailEditVisible', true);
 			this.set('employeeDetailToEdit', item);
-
 		},
-		saveDetailEdit: function(item) {
+		saveDetailEdit: function() {
 			this.set('detailEditVisible', false);
 			this.set('employeeListVisible', true);			
 		},
@@ -35,9 +34,6 @@ export default Ember.Component.extend({
 			this.set('addNewEmployeeVisible', false);
 			let newEmployee = this.get('employeeDetail');
 			this.sendAction('addEmployee', this.get('employeeDetail'));
-			/*newEmployee.id = this.get('employees').length + 1;
-			this.get('employees').pushObject(newEmployee);
-			this.set('newEmployee', {});*/
 		},
 		cancelDetail: function() {
 			this.set('detailEditVisible', false);
