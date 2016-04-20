@@ -26,15 +26,18 @@ export default Ember.Component.extend({
 			this.set('employeeDetailToEdit', item);
 
 		},
-		saveDetailEdit: function() {
+		saveDetailEdit: function(item) {
 			this.set('detailEditVisible', false);
 			this.set('employeeListVisible', true);			
 		},
-		addNewEmployee: function(newEmployee) {
+		addNewEmployee: function() {
 			this.set('employeeListVisible', true);
 			this.set('addNewEmployeeVisible', false);
-			newEmployee.id = this.get('employees').length + 1;
-			this.get('employees').pushObject(newEmployee);			
+			let newEmployee = this.get('employeeDetail');
+			this.sendAction('addEmployee', this.get('employeeDetail'));
+			/*newEmployee.id = this.get('employees').length + 1;
+			this.get('employees').pushObject(newEmployee);
+			this.set('newEmployee', {});*/
 		},
 		cancelDetail: function() {
 			this.set('detailEditVisible', false);
