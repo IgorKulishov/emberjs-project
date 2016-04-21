@@ -2,7 +2,11 @@
 <h1 id="title">Prodigy Contact Manager</h1>
 </div>
 
-{{#link-to "employees"}}Employees{{/link-to}} 
-{{#link-to "settings"}}Settings{{/link-to}} 
+<ul class="nav nav-tabs">
+  <li class="active">{{#link-to "employees"}}Employees{{/link-to}}</li>
+  <li>{{#link-to "settings"}}Settings{{/link-to}}</li>
+</ul>
 
+<div class="tab-content">
 {{outlet}}
+</div>

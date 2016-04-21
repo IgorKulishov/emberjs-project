@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 		employeeTheDetail: function(newEployeeDetail) {
 			console.log(newEployeeDetail);
 			//call some api
-			return $.post("api/employees", newEployeeDetail)
+			return $.post("api/employees", newEployeeDetail);
 		}
 	}
 });

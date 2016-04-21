@@ -33,7 +33,7 @@ export default Ember.Component.extend({
 			this.set('employeeListVisible', true);
 			this.set('addNewEmployeeVisible', false);
 			let newEmployee = this.get('employeeDetail');
-			this.sendAction('addEmployee', this.get('employeeDetail'));
+			this.sendAction('addEmployee', newEmployee);
 		},
 		cancelDetail: function() {
 			this.set('detailEditVisible', false);
