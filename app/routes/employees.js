@@ -8,10 +8,20 @@ export default Ember.Route.extend({
 	},
 	actions: {
 		employeeTheDetail: function(newEployeeDetail) {
-			console.log(newEployeeDetail);
 			//call some api
 			//return $.post("api/employees", newEployeeDetail);
-			return this.store.createRecord('employee', newEployeeDetail);
+			return this.store.createRecord('employee', {
+					'firstName':newEployeeDetail.firstName,
+					'lastName': newEployeeDetail.lastName,
+					'email':newEployeeDetail.email,
+					'dept':newEployeeDetail.dept,
+					'tel':newEployeeDetail.tel}).save().then(function(post){
+				console.log('post');
+				console.log(post);
+			}).catch(function(error) {
+				console.log('error');
+				console.log(error);
+			});
 		}
 	}
 });

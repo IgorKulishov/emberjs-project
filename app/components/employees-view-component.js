@@ -27,7 +27,7 @@ export default Ember.Component.extend({
 		},
 		saveDetailEdit: function() {
 			this.set('detailEditVisible', false);
-			this.set('employeeListVisible', true);			
+			this.set('employeeListVisible', true);
 		},
 		addNewEmployee: function() {
 			this.set('employeeListVisible', true);

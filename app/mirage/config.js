@@ -7,9 +7,9 @@ export default function() {
 
     Note: these only affect routes defined *after* them!
   */
-  // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = '';    // make this `api`, for example, if your API is namespaced
-  // this.timing = 400;      // delay for each request, automatically set to 0 during testing
+   //this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
+   //this.namespace = '';    // make this `api`, for example, if your API is namespaced
+   this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
   /*
     Route shorthand cheatsheet
@@ -27,37 +27,64 @@ export default function() {
     this.get('/contacts/:id', 'user');
     this.get('/contacts/:id', ['contact', 'addresses']);
   */
+ //this.get('/employees', 'employees');
+ this.get('/employees/:id', function(db, request) {
+  let id = request.params.id;
+  return {
+    data: {
+      type: 'employees',
+      id: id,
+      attributes: db.employees.find(id)
+    }
+  };
+});
 
-  this.get('/employees', function() {
-    return {
-      data: [{
-      id: 1,
-      type: 'employees',
-      attributes: {
-        firstName: "John",
-        lastName: "Smith",
-        email: "john.smith@asdf.com",
-        tel: "555-555-5599",
-        dept:"Sales"
-      }
-    }, {
-      id: 2,
-      type: 'employees',
-      attributes: {
-        firstName: "Jane",
-        lastName: "Doe",
-        email: "jane.doe@asdf.com",
-        tel: "555-555-5577",
-        dept: "Sales"
-      }
-    }]};
-  });
+this.get('/employees', function(db) {
+function allData() {
+  var data = [];
+  for (var i = 0; i < 10; i++) {
+      data.push(db.employees.find(i+1));
+  }
+  return {'data': data};
+}
+return allData();
+});
+  // this.get('/employees', function() {
+  //   return {
+  //     data: [{
+  //     id: 1,
+  //     type: 'employees',
+  //     attributes: {
+  //       firstName: "John",
+  //       lastName: "Smith",
+  //       email: "john.smith@asdf.com",
+  //       tel: "555-555-5599",
+  //       dept:"Sales"
+  //     }
+  //   }, {
+  //     id: 2,
+  //     type: 'employees',
+  //     attributes: {
+  //       firstName: "Jane",
+  //       lastName: "Doe",
+  //       email: "jane.doe@asdf.com",
+  //       tel: "555-555-5577",
+  //       dept: "Sales"
+  //     }
+  //   }]};
+  // });
   /*
     POST shorthands
 
     this.post('/contacts');
     this.post('/contacts', 'user'); // specify the type of resource to be created
   */
+
+  this.post('/employees', function(store, request) {
+    let newEmployeeAttrs = JSON.parse(request.requestBody).data;
+    let employees = store.employees.insert(newEmployeeAttrs);
+    return {'data' : [employees]};
+  });
 
   /*
     PUT shorthands
